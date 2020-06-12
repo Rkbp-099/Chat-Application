@@ -20,11 +20,16 @@ const message = "Welcome New User to this infernal application...}:)"
 io.on('connection', (socket) => {
     console.log('New Websocket connection established');
     socket.emit('message', message);
+    socket.broadcast.emit('message', "A new user joined!!");
 
     socket.on('sendMessage', (msg) => {
         // count++;
         io.emit('message', msg);
-    })
+    });
+
+    socket.on('disconnect', () => {
+        io.emit('message', "A user has left!!");
+    });
 })
 
 const port = process.env.PORT || 3000;
