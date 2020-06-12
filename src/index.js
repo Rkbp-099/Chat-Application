@@ -30,6 +30,11 @@ io.on('connection', (socket) => {
     socket.on('disconnect', () => {
         io.emit('message', "A user has left!!");
     });
+
+    socket.on('sendLocation', (coords) => {
+        io.emit('message', `https://google.com/maps?q=${coords.latitude},${coords.longitude}`);
+        // io.emit('message',JSON.parse(location));
+    })
 })
 
 const port = process.env.PORT || 3000;
