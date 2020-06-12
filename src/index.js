@@ -9,19 +9,21 @@ const io = socketio(server);
 
 app.use(express.static(path.join(__dirname,'/../public')));
 
-app.get('/', function(req, res){
+app.get('/', (req, res) => {
     res.render('index');    
 });
 
-let count = 0;
+
+
+const message = "Welcome New User to this infernal application...}:)"
 
 io.on('connection', (socket) => {
     console.log('New Websocket connection established');
-    socket.emit('countUpdated', count);
+    socket.emit('message', message);
 
-    socket.on('increment!', () => {
-        count++;
-        io.emit('countUpdated', count);
+    socket.on('sendMessage', (msg) => {
+        // count++;
+        io.emit('message', msg);
     })
 })
 
