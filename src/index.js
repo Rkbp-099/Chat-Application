@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
 io.on('connection', (socket) => {
     console.log('New Websocket connection established');
 
-    socket.emit('message', generateMessage("Welcome New User to this infernal application...}:)"));
+    socket.emit('message', generateMessage("Welcome!"));
     socket.broadcast.emit('message', generateMessage("A new user joined!!"));
 
     socket.on('sendMessage', (msg, callback) => {
