@@ -12,9 +12,10 @@ const messageTemplate = document.querySelector("#message-template").innerHTML;
 const locationMessageTemplate = document.querySelector("#location-message-template").innerHTML;
 
 socket.on('message', (message) => {
-    console.log(message);
+    console.log(message.text);
     const html = Mustache.render(messageTemplate, {
-        message,
+        message: message.text,
+        createdAt: moment(message.createdAt).format('h:mm a'),
     });
     const htmlObject = document.createElement('div');
     htmlObject.innerHTML = html
