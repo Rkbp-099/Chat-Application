@@ -15,7 +15,7 @@ socket.on('message', (message) => {
     console.log(message.text);
     const html = Mustache.render(messageTemplate, {
         message: message.text,
-        createdAt: moment(message.createdAt).format('h:mm a'),
+        createdAt: moment(message.createdAt).format('kk:mm a'),
     });
     const htmlObject = document.createElement('div');
     htmlObject.innerHTML = html
@@ -23,10 +23,11 @@ socket.on('message', (message) => {
 
 });
 
-socket.on('locationMessage', (url) => {
-    console.log(url);
+socket.on('locationMessage', (urlOb) => {
+    console.log(urlOb);
     const locationLink = Mustache.render(locationMessageTemplate, {
-        url,
+        url: urlOb.url,
+        createdAt: moment(urlOb.createdAt).format('kk:mm a'),
     });
     const urlObject = document.createElement('div');
     urlObject.innerHTML = locationLink;
