@@ -63,7 +63,7 @@ socket.on('locationMessage', (urlOb) => {
     });
     const urlObject = document.createElement('div');
     urlObject.innerHTML = locationLink;
-    htmlObject.setAttribute('class', 'message');
+    urlObject.setAttribute('class', 'message');
     $messages.insertAdjacentElement('beforeend', urlObject);
     autoScroll();
 });
