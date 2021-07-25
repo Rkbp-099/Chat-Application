@@ -1,6 +1,8 @@
 # Chat-Application
-A chat application made with NodeJS and Socket.io
+An end to end chat application made with NodeJS and Socket.io
 
+1.  NodeJS based web server
+2.  socketio library for end to end communication
 
-sudo kill -9 $(lsof -t -i:3000) to kill port 3000
-https://raktim-node-chat-app.herokuapp.com/ link to see the live app 
+Application is live at 
+https://raktim-node-chat-app.herokuapp.com/
